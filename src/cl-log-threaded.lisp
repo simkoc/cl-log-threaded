@@ -87,8 +87,7 @@
 
 
 (defun log-manager ()
-  (sb-thread:with-mutex (*log-mutex*)
-    (orf *log-manager* (make-instance 'log-manager))))
+  (orf *log-manager* (make-instance 'log-manager)))
 
 
 (defmethod initialize-instance :after ((self log-manager) &key disabled categories)
@@ -482,7 +481,8 @@
          nil))))
 
 (defmacro log-message (category description &rest arguments)
-  `(log-manager-message (log-manager) ,category ,description ,@arguments))
+  `(sb-thread:with-mutex (cl-log-threaded:*log-mutex*)
+     (log-manager-message (log-manager) ,category ,description ,@arguments)))
 
 ;; A.  REFERENCES
 ;;

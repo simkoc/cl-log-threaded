@@ -18,6 +18,7 @@
   (:nicknames "CL-LOG-THREADED")
   (:use "COMMON-LISP")
   (:export
+   "*LOG-MUTEX*"
    "*CL-LOG-RELEASE*"
    ;; manager
    "LOG-MANAGER"                        ; [setfable] the current log-manager; also log-manager class eg (setf (log-manager) (make-instance 'log-manager))

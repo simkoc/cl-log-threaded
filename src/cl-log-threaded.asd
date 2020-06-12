@@ -2,7 +2,7 @@
 
 (in-package asdf)
 
-(defsystem :cl-log
+(defsystem :cl-log-threaded
     :description "CL-LOG - a general purpose logging utility"
     :version "1.0.1"
     :author "Nick Levine <ndl@ravenbrook.com>"
